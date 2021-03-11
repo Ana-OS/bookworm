@@ -1,0 +1,101 @@
+// Review Modal
+
+.modal-content {
+  margin-top: 45%;
+}
+
+.rate-title {
+  color: $black;
+  font: 500 16px $body-font;
+}
+
+.btn.btn-primary.review {
+  width: 100%;
+  height: 46px;
+  background-color: $black;
+  font-family: $body-font;
+  border: none;
+  border-radius: 50px;
+}
+
+.btn.btn-primary.review:hover{
+  background-color: $black-hover;
+}
+
+.btn.btn-primary.review a{
+  color: $off-white;
+  text-decoration: none;
+}
+
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+
+.rate:not(:checked) > input {
+    position: absolute;
+    top: -9999px;
+}
+
+.rate:not(:checked) > label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
+}
+
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rate > input:checked ~ label {
+    color: #ffc700;
+}
+
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;
+}
+
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+.rate {
+  padding-left: 0px !important;
+  margin-bottom: 5px;
+}
+
+.review-title-container {
+  clear: both;
+  color: $black;
+  font: 500 16px $body-font;
+}
+
+.review-content {
+  p {
+  color: $black;
+  font: 100 16px $body-font;
+  margin-left: 0px !important;
+  }
+}
+
+.fa-star {
+  color: #FFDE59;
+}
+
+.fas.fa-star.gray {
+  color: $med-gray;
+}
+
+.btn.btn-sm.rev {
+  padding: 0px;
+}

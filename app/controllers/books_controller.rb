@@ -13,7 +13,10 @@ class BooksController < ApplicationController
 
   end
 
-  def show;end
+  def show
+    @reviews = @book.reviews
+    @review = Review.find_by(book: @book, user: current_user) || Review.new
+  end
 
 
   private

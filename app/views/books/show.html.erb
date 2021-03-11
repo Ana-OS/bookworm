@@ -5,8 +5,50 @@
     <div class="w-50" style="border:1px solid red"><%= truncate(@book.author, length: 47) %></div>
     <div class=" w-50" style="border:1px solid red"><%= truncate(@book.description, length: 200) %></div>
     <a href="<%= @book.preview_link %>"><p>Preview</p></a>
-    <a href=""><p>Review</p></a>
     <a href="<%= @book.buy_link%>"><p>Buy Book</p></a>
+    <!-- button to open modal /  Create a review -->
+    <button type="button" class="btn btn-sm rev" data-toggle="modal" data-target="#modal">
+      Review
+    </button>
+
+
+
   </div>
-  <div></div>
+  <!-- Review Modal -->
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <%= simple_form_for [ @book, @review ] do |f| %>
+          <div class="rate-title">Rate it:</div>
+          <div class="rate">
+            <input type="radio" id="star5" name="review[rating]" value="5" <%= @review.rating == 5 ? "checked" : "" %> />
+            <label for="star5" title="text">5 stars</label>
+            <input type="radio" id="star4" name="review[rating]" value="4" <%= @review.rating == 4 ? "checked" : "" %>/>
+            <label for="star4" title="text">4 stars</label>
+            <input type="radio" id="star3" name="review[rating]" value="3" <%= @review.rating == 3 ? "checked" : "" %>/>
+            <label for="star3" title="text">3 stars</label>
+            <input type="radio" id="star2" name="review[rating]" value="2" <%= @review.rating == 2 ? "checked" : "" %>/>
+            <label for="star2" title="text">2 stars</label>
+            <input type="radio" id="star1" name="review[rating]" value="1" <%= @review.rating == 1 ? "checked" : "" %> />
+            <label for="star1" title="text">1 star</label>
+          </div>
+        </div>
+        <div class="review-title-container">
+          <label for="review-title">Leave a review:</label>
+            <%= f.input :comment, label: false, placeholder: 'Your opinion here' %>
+            <%= f.submit "Submit review", class: "btn btn-primary review" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End of Review Modal -->
 </div>
