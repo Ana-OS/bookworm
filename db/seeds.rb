@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+<<<<<<< HEAD
 puts "destroying all books"
 Book.destroy_all
 
@@ -38,3 +39,5 @@ end
 black_lives_matter_books.each do |book|
   Book.create(title: book.title, author: book.authors, description: book.description, genre: black_lives_matter, photo_url: book.image_link(:zoom => 1), preview_link: book.preview_link, buy_link: book.sale_info['buyLink'])
 end
+=======
+>>>>>>> 1030043e9ab258a10cbdc1b79d94b0c4eb259ad6
