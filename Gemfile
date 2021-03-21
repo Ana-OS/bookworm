@@ -33,7 +33,7 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'devise'
 gem 'googlebooks', '~> 0.0.9'
-
+gem 'pg_search', '~> 2.3.0'
 
 group :development, :test do
   gem 'pry-byebug'

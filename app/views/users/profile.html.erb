@@ -1,0 +1,47 @@
+<div class="container" style="border:1px solid red">
+  <div>
+    <h1>Books To Read</h1>
+    <div class="wrapper d-flex">
+      <% if @to_read.empty? %>
+        <p>you have 0</p>
+      <% else %>
+        <% @to_read.each do |book| %>
+          <div>
+            <div class="mr-5"><%= image_tag book.photo_url %></div>
+            <%= link_to unlist_book_path(book), method: :delete do %>
+              <span><i class="fas fa-trash-alt"></i></span>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div>
+    <h1>Read Books</h1>
+    <div class="wrapper d-flex">
+      <% @read.each do |book| %>
+      <div>
+        <div class="mr-5"><%= image_tag book.photo_url %></div>
+        <%= link_to unlist_book_path(book), method: :delete do %>
+          <span><i class="fas fa-trash-alt"></i></span>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+   <div>
+    <h1>Books in my Wishlist <i class="fas fa-heart" style="color: red"></i></h1>
+     <div class="wrapper d-flex">
+      <% @wishlist.each do |book| %>
+        <div>
+          <div class="mr-5"><%= image_tag book.photo_url %></div>
+          <div>
+            <%= link_to unlist_book_path(book), method: :delete do %>
+            <span><i class="fas fa-trash-alt"></i></span>
+          <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

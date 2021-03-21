@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :reviews
+  has_many :users_books
   has_many :books, through: :users_books
 
   has_one_attached :photo

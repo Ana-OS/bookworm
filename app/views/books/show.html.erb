@@ -5,15 +5,42 @@
     <div class="w-50" style="border:1px solid red"><%= truncate(@book.author, length: 47) %></div>
     <div class=" w-50" style="border:1px solid red"><%= truncate(@book.description, length: 200) %></div>
     <a href="<%= @book.preview_link %>"><p>Preview</p></a>
+
     <a href="<%= @book.buy_link%>"><p>Buy Book</p></a>
     <!-- button to open modal /  Create a review -->
     <button type="button" class="btn btn-sm rev" data-toggle="modal" data-target="#modal">
       Review
     </button>
-
+    <button type="button" class="btn btn-sm rev" data-toggle="modal" data-target="#modal_list">
+      Add to List
+    </button>
 
 
   </div>
+  <!-- add to List Modal -->
+<div id="modal_list" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <%= link_to to_read_book_path, method: :post do %>
+          <div>to read</div>
+        <% end %>
+        <%= link_to read_book_path, method: :post do %>
+          <div>read</div>
+        <% end %>
+        <%= link_to wish_book_path, method: :post do %>
+          <i class="far fa-heart"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End of add to List Modal -->
   <!-- Review Modal -->
 <div id="modal" class="modal fade" role="dialog">
   <div class="modal-dialog">

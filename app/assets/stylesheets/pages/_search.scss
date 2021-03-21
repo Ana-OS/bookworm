@@ -1,0 +1,26 @@
+.container.search-header {
+  margin-top:-3%;
+}
+
+.container.search-header a {
+  line-height: 1;
+}
+
+.search-bar {
+  background: #FFFFFF;
+  border: 0.5px solid #E5E5E5;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 4px rgba(191, 191, 191, 0.25);
+  border-radius: 50px;
+  width: 115%;
+  height: 46px;
+  padding-left: 21px;
+}
+
+.title-search{
+  color: $black;
+  font: 900 16px $body-font;
+  padding: 10px 0px 10px 0px;
+  margin-top: 12px;
+}
+
