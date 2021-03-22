@@ -10,10 +10,10 @@ puts "destroying all books"
 Book.destroy_all
 
 puts "creating fiction books"
-fiction_books = GoogleBooks.search("subject:fiction", {:count => 15, :order_by => 'newest'})
-adventure_books = GoogleBooks.search("subject:Adventure", {:count => 15, :order_by => 'newest'})
+fiction_books = GoogleBooks.search("subject:fiction", {:count => 15, :order_by => 'newest', {:country => "us"}})
+adventure_books = GoogleBooks.search("subject:Adventure", {:count => 15, :order_by => 'newest', {:country => "us"}})
 crime_books = GoogleBooks.search("subject:crime", {:count => 15, :order_by => 'newest'})
-black_lives_matter_books = GoogleBooks.search("black lives matter", {:count => 15, :order_by => 'newest'})
+black_lives_matter_books = GoogleBooks.search("black lives matter", {:count => 15, :order_by => 'newest', {:country => "us"}})
 
 # drama = Genre.create(name: "drama")
 drama = Genre.create(name: "drama")

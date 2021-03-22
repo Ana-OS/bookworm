@@ -1,20 +1,29 @@
 class BooksController < ApplicationController
-  before_action :find_book, only: [:show, :wish, :read, :to_read, :unlist]
+  before_action :find_book, only: [ :wish, :read, :to_read, :unlist]
   def index
     # @books = Book.all
     # @books = Book.joins(:genre).where(name: "fiction")
     # binding.pry
-    @books_fiction = Book.joins(:genre).where(genres: {name: "fiction"})
+    # @books_fiction = Book.joins(:genre).where(genres: {name: "fiction"})
     @books_adventure = Book.joins(:genre).where(genres: {name: "adventure"})
     # binding.pry
     # @books_drama = Book.joins(:genre).where(genres: {name: "drama"})
     @books_crime = Book.joins(:genre).where(genres: {name: "crime"})
     @books_black_lives_matter = Book.joins(:genre).where(genres: {name: "black_lives_matter"})
+    @books_fiction = GoogleBooks.search("black lives matter", {:count => 15, :order_by => 'newest', :country => "us"})
   end
 
   def show
-    @reviews = @book.reviews
-    @review = Review.find_by(book: @book, user: current_user) || Review.new
+    @books_fiction = GoogleBooks.search("black lives matter", {:count => 15, :order_by => 'newest', :country => "us"})
+    @books_fiction.each do |book|
+      @book = book
+    end
+  end
+
+  def create
+  @books_fiction.each do |book|
+   @book = Book.create(title: book.title, author: book.authors, description: book.description, genre: fiction, photo_url: book.image_link(:zoom => 1), preview_link: book.preview_link, buy_link: book.sale_info['buyLink'])
+   end
   end
 
   def to_read
@@ -69,7 +78,10 @@ class BooksController < ApplicationController
 
   def find_book
     @book = Book.find(params[:id])
+  end
 
+  def get_books
+    @books_fiction = GoogleBooks.search("black lives matter", {:count => 15, :order_by => 'newest', :country => "us"})
   end
 end
 

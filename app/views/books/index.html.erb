@@ -3,9 +3,9 @@
 <div class="d-flex">
   <% @books_fiction.each do |book| %>
     <div class="m-5">
-     <% if !book.photo_url.nil? %>
+     <% if !book.image_link.nil? %>
         <%= link_to book_path(book), data: { turbolinks: false } do %>
-          <div><%= image_tag book.photo_url %></div>
+          <div><%= image_tag book.image_link %></div>
         <% end %>
       <% end %>
     </div>

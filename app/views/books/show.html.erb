@@ -1,8 +1,8 @@
 <div class="container d-flex col-lg-6 " style="border:1px solid red">
   <div class="m-5 justify-content-center" style="border:1px solid red">
-    <%= image_tag @book.photo_url, class: "border border-primary" %>
+    <%= image_tag @book.image_link, class: "border border-primary" %>
     <div class="w-50" style="border:1px solid red"><%= truncate(@book.title, length: 47) %></div>
-    <div class="w-50" style="border:1px solid red"><%= truncate(@book.author, length: 47) %></div>
+    <div class="w-50" style="border:1px solid red"><%= truncate(@book.authors, length: 47) %></div>
     <div class=" w-50" style="border:1px solid red"><%= truncate(@book.description, length: 200) %></div>
     <a href="<%= @book.preview_link %>"><p>Preview</p></a>
 
