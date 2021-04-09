@@ -1,29 +1,37 @@
 class BooksController < ApplicationController
-  before_action :find_book, only: [ :wish, :read, :to_read, :unlist]
+  before_action :find_book, only: [ :show, :wish, :read, :to_read, :unlist]
   def index
+    time = Time.new
     # @books = Book.all
     # @books = Book.joins(:genre).where(name: "fiction")
     # binding.pry
     # @books_fiction = Book.joins(:genre).where(genres: {name: "fiction"})
     @books_adventure = Book.joins(:genre).where(genres: {name: "adventure"})
-    # binding.pry
+    # # binding.pry
     # @books_drama = Book.joins(:genre).where(genres: {name: "drama"})
     @books_crime = Book.joins(:genre).where(genres: {name: "crime"})
     @books_black_lives_matter = Book.joins(:genre).where(genres: {name: "black_lives_matter"})
-    @books_fiction = GoogleBooks.search("black lives matter", {:count => 15, :order_by => 'newest', :country => "us"})
+
+    if time.wday == 0
+      create
+    end
+    @books_fiction = Book.all
   end
 
   def show
-    @books_fiction = GoogleBooks.search("black lives matter", {:count => 15, :order_by => 'newest', :country => "us"})
-    @books_fiction.each do |book|
-      @book = book
-    end
+    @reviews = @book.reviews
+    @review = Review.find_by(book: @book, user: current_user) || Review.new
   end
 
   def create
-  @books_fiction.each do |book|
-   @book = Book.create(title: book.title, author: book.authors, description: book.description, genre: fiction, photo_url: book.image_link(:zoom => 1), preview_link: book.preview_link, buy_link: book.sale_info['buyLink'])
-   end
+    get_books
+    @books_fiction.each do |book|
+
+      if book.language == "en" && book.image_link ==
+      @book = Book.new(title: book.title, description: book.description, photo_url: book.image_link(:zoom => 1), preview_link: book.preview_link, buy_link: book.sale_info['buyLink'])
+      @book.save
+      end
+    end
   end
 
   def to_read
@@ -81,7 +89,8 @@ class BooksController < ApplicationController
   end
 
   def get_books
-    @books_fiction = GoogleBooks.search("black lives matter", {:count => 15, :order_by => 'newest', :country => "us"})
+    @books_fiction = GoogleBooks.search("subject:fiction", {:count => 50, :order_by => 'newest', :country => "US" })
   end
+
 end
 

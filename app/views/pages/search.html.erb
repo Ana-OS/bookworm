@@ -1,11 +1,9 @@
 <div class="container">
   <div class="d-flex">
-    <% if @books.size > 0 %>
-      <% @books.each do |book| %>
-      <div style="border:1px solid red">
-        <p><%=image_tag book.photo_url %></p>
-      </div>
-      <% end %>
-    <% end %>
+
+      <%= @books_fiction.first %>
+
+
+
   </div>
 </div>

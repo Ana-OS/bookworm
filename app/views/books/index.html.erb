@@ -2,45 +2,13 @@
   <h2 class="m-4">Fiction</h2>
 <div class="d-flex">
   <% @books_fiction.each do |book| %>
-    <div class="m-5">
-     <% if !book.image_link.nil? %>
+    <div class="m-3">
+     <% if !book.photo_url.nil? %>
         <%= link_to book_path(book), data: { turbolinks: false } do %>
-          <div><%= image_tag book.image_link %></div>
+          <div><%= image_tag book.photo_url %></div>
         <% end %>
       <% end %>
     </div>
   <% end %>
 </div>
   <h2 class="m-4">Adventure</h2>
-<div class="d-flex">
-  <% @books_adventure.each do |book| %>
-    <div class="ml-5">
-      <% if !book.photo_url.nil? %>
-        <div><%= image_tag book.photo_url %></div>
-      <% end %>
-    </div>
-  <% end %>
-</div>
- <h2 class="m-4">Crime</h2>
-<div class="d-flex">
-  <% @books_crime.each do |book| %>
-    <div class="ml-5">
-      <% if !book.photo_url.nil? %>
-        <div><%= image_tag book.photo_url %></div>
-      <% end %>
-    </div>
-  <% end %>
-</div>
-<h2 class="m-4">Black Lives matter</h2>
-<div class="d-flex">
-  <% @books_black_lives_matter.each do |book| %>
-    <div class="ml-5">
-      <% if !book.photo_url.nil? %>
-        <div><%= image_tag book.photo_url %></div>
-        <p><%=truncate(book.title,length: 20) %></p>
-        <p><%=book.author %></p>
-      <% end %>
-    </div>
-  <% end %>
-</div>
-
